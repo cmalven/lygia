@@ -1,0 +1,17 @@
+{
+  "name": "lygia-glsl",
+  "version": "1.0.0",
+  "description": "Multi-language shader library packaged for npm",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmalven/lygia.git"
+  },
+  "keywords": [
+    "lygia",
+    "glsl",
+    "shaders",
+    "webgl"
+  ],
+  "homepage": "https://github.com/cmalven/lygia#readme"
+}
