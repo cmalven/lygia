@@ -2,6 +2,8 @@
 
 # Lygia: a multi-language shader library
 
+> This package is automatically kept up-to-date with the base lygia repository at https://github.com/patriciogonzalezvivo/lygia
+
 Tired of reimplementing and searching for the same functions over and over, I started compiling and building a shader library of reusable assets (mostly functions) that can be include over and over. It's very granular, designed for reusability, performance and flexibility. 
 
 Join [#Lygia channel on shader.zone discord](https://shader.zone/) to learn how to use it, share work or get help.
