@@ -14,6 +14,5 @@ jobs:
       - uses: tgymnich/fork-sync@v1.4
         with:
           token: ${{ secrets.PERSONAL_TOKEN }}
-          owner: patriciogonzalezvivo
           base: main
           head: main
