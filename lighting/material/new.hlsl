@@ -1,13 +1,13 @@
-#include "albedo.glsl"
-#include "specular.glsl"
-#include "emissive.glsl"
-#include "occlusion.glsl"
-#include "normal.glsl"
-#include "metallic.glsl"
-#include "roughness.glsl"
-#include "shininess.glsl"
+#include "albedo.hlsl"
+#include "specular.hlsl"
+#include "emissive.hlsl"
+#include "occlusion.hlsl"
+#include "normal.hlsl"
+#include "metallic.hlsl"
+#include "roughness.hlsl"
+#include "shininess.hlsl"
 
-#include "../material.glsl"
+#include "../material.hlsl"
 
 /*
 original_author: Patricio Gonzalez Vivo
@@ -30,7 +30,7 @@ options:
 #if defined(GLSLVIEWER)
 #define SURFACE_POSITION v_position
 #else
-#define SURFACE_POSITION vec3(0.0)
+#define SURFACE_POSITION float3(0.0, 0.0, 0.0)
 #endif
 #endif
 
@@ -52,13 +52,13 @@ void materialNew(out Material _mat) {
     _mat.normal             = materialNormal();
 
     // PBR Properties
-    _mat.albedo          = materialAlbedo();
+    _mat.albedo             = materialAlbedo();
     _mat.emissive           = materialEmissive();
     _mat.roughness          = materialRoughness();
     _mat.metallic           = materialMetallic();
 
     // Other Properties
-    _mat.f0                 = vec3(0.04);
+    _mat.f0                 = float3(0.04, 0.04, 0.04);
     _mat.reflectance        = 0.5;
 
     // Shade
@@ -71,7 +71,7 @@ void materialNew(out Material _mat) {
     _mat.clearCoat  = MATERIAL_CLEARCOAT_THICKNESS;
     _mat.clearCoatRoughness = MATERIAL_CLEARCOAT_ROUGHNESS;
 #if defined(MATERIAL_CLEARCOAT_THICKNESS_NORMAL)
-    _mat.clearCoatNormal    = vec3(0.0, 0.0, 1.0);
+    _mat.clearCoatNormal    = float3(0.0, 0.0, 1.0);
 #endif
 #endif
 
@@ -83,9 +83,9 @@ void materialNew(out Material _mat) {
 
 #if defined(MATERIAL_SUBSURFACE_COLOR)
     #if defined(SHADING_MODEL_SUBSURFACE)
-    _mat.subsurfaceColor    = vec3(1.0);
+    _mat.subsurfaceColor    = float3(1.0, 1.0, 1.0);
     #else
-    _mat.subsurfaceColor    = vec3(0.0);
+    _mat.subsurfaceColor    = float3(0.0, 0.0, 0.0);
     #endif
 #endif
 

@@ -1,8 +1,8 @@
-#include "../../math/const.glsl"
-#include "../../math/saturateMediump.glsl"
+#include "../../math/const.hlsl"
+#include "../../math/saturateMediump.hlsl"
 
-#ifndef FNC_GGX
-#define FNC_GGX
+#ifndef FNC_COMMON_GGX
+#define FNC_COMMON_GGX
 
 // Walter et al. 2007, "Microfacet Models for Refraction through Rough Surfaces"
 
@@ -26,8 +26,8 @@ float GGX(float NoH, float linearRoughness) {
     return saturateMediump(d);
 }
 
-float GGX(vec3 N, vec3 H, float NoH, float linearRoughness) {
-    vec3 NxH = cross(N, H);
+float GGX(float3 N, float3 H, float NoH, float linearRoughness) {
+    float3 NxH = cross(N, H);
     float oneMinusNoHSquared = dot(NxH, NxH);
 
     float a = NoH * linearRoughness;
