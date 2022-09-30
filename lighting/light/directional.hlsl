@@ -1,47 +1,44 @@
-#include "../specular.glsl"
-#include "../diffuse.glsl"
-#include "falloff.glsl"
+#include "../specular.hlsl"
+#include "../diffuse.hlsl"
+#include "falloff.hlsl"
 
 /*
 original_author: Patricio Gonzalez Vivo
 description: calculate directional light
-use: lightDirectional(<vec3> _diffuseColor, <vec3> _specularColor, <vec3> _N, <vec3> _V, <float> _NoV, <float> _f0, out <vec3> _diffuse, out <vec3> _specular)
+use: lightDirectional(<float3> _diffuseColor, <float3> _specularColor, <float3> _N, <float3> _V, <float> _NoV, <float> _f0, out <float3> _diffuse, out <float3> _specular)
 options:
     - DIFFUSE_FNC: diffuseOrenNayar, diffuseBurley, diffuseLambert (default)
-    - LIGHT_POSITION: in GlslViewer is u_light
-    - LIGHT_COLOR: in GlslViewer is u_lightColor
-    - LIGHT_INTENSITY: in GlslViewer is u_lightIntensity
+    - LIGHT_POSITION: Position
+    - LIGHT_COLOR: Color
+    - LIGHT_INTENSITY: Intensity
 */
 
 #ifndef LIGHT_POSITION
-#if defined(GLSLVIEWER)
-#define LIGHT_POSITION u_light
+#if defined(UNITY_COMPILER_HLSL)
+#define LIGHT_POSITION _WorldSpaceLightPos0.xyz
 #else
-#define LIGHT_POSITION vec3(0.0, 10.0, -50.0)
+#define LIGHT_POSITION  float3(0.0, 10.0, -50.0)
 #endif
 #endif
 
 #ifndef LIGHT_COLOR
-#if defined(GLSLVIEWER)
-#define LIGHT_COLOR u_lightColor
+#if defined(UNITY_COMPILER_HLSL)
+#include <UnityLightingCommon.cginc>
+#define LIGHT_COLOR     _LightColor0.rgb
 #else
-#define LIGHT_COLOR vec3(0.5)
+#define LIGHT_COLOR     float3(0.5, 0.5, 0.5)
 #endif
 #endif
 
 #ifndef LIGHT_INTENSITY
-#if defined(GLSLVIEWER)
-#define LIGHT_INTENSITY u_lightIntensity
-#else
 #define LIGHT_INTENSITY 1.0
-#endif
 #endif
 
 #ifndef FNC_LIGHT_DIRECTIONAL
 #define FNC_LIGHT_DIRECTIONAL
 
-void lightDirectional(vec3 _diffuseColor, vec3 _specularColor, vec3 _N, vec3 _V, float _NoV, float _roughness, float _f0, float _shadow, inout vec3 _diffuse, inout vec3 _specular) {
-    vec3 s = LIGHT_POSITION;
+void lightDirectional(float3 _diffuseColor, float3 _specularColor, float3 _N, float3 _V, float _NoV, float _roughness, float _f0, float _shadow, inout float3 _diffuse, inout float3 _specular) {
+    float3 s = LIGHT_POSITION;
     float NoL = dot(_N, s);
     float dif = diffuseOrenNayar(s, _N, _V, _NoV, NoL, _roughness);
     float spec = specularCookTorrance(s, _N, _V, _NoV, NoL, _roughness, _f0);
@@ -49,10 +46,8 @@ void lightDirectional(vec3 _diffuseColor, vec3 _specularColor, vec3 _N, vec3 _V,
     _specular = LIGHT_INTENSITY * (_specularColor * LIGHT_COLOR * spec) * _shadow;
 }
 
-
 // void lightDirectional(float3 _diffuseColor, float3 _specularColor, float3 _N, float3 _V, float _NoV, float _roughness, float _f0, inout float3 _diffuse, inout float3 _specular) {
 //     return lightDirectional(_diffuseColor, _specularColor, _N, _V, _NoV, _roughness, _f0, 1.0, _diffuse, _specular);
 // }
-
 
 #endif

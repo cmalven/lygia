@@ -1,9 +1,8 @@
 #include "../math/saturate.glsl"
-#include "../sample/shadowPCF.glsl"
 
 #include "material.glsl"
 #include "light/point.glsl"
-#include "shadow.glsl"
+#include "light/directional.glsl"
 
 #include "common/reflection.glsl"
 #include "common/specularAO.glsl"
@@ -101,18 +100,10 @@ vec4 pbr(const Material _mat) {
     // ------------------------
     vec3 lightDiffuse = vec3(0.0);
     vec3 lightSpecular = vec3(0.0);
-    // lightWithShadow(diffuseColor, specularColor, N, V, NoV, roughness, f0, lightDiffuse, lightSpecular);
     
     {
-        // calcPointLight(_comp, lightDiffuse, lightSpecular);
-        // calcDirectionalLight(_comp, lightDiffuse, lightSpecular);
-
-        // float shadow = 1.0;
-    // #if defined(LIGHT_SHADOWMAP) && defined(LIGHT_SHADOWMAP_SIZE) && defined(LIGHT_COORD) && !defined(PLATFORM_RPI)
-    //     shadow = shadow(LIGHT_SHADOWMAP, vec2(LIGHT_SHADOWMAP_SIZE), (LIGHT_COORD).xy, (LIGHT_COORD).z);
-    // #endif
-
         lightPoint(diffuseColor, specularColor, N, V, NoV, roughness, f0, _mat.shadow, lightDiffuse, lightSpecular);
+        // lightDirectional(diffuseColor, specularColor, N, V, NoV, roughness, f0, _mat.shadow, lightDiffuse, lightSpecular);
     }
     
     // Final Sum
