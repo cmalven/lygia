@@ -57,8 +57,8 @@ The functions are divided in different categories:
 * `color/`: general color operations like `luma()`, `saturation()`, blend modes, palettes, color space conversion and tonemaps.
 * `animation/`: animation operations, like easing
 * `generative/`: generative functions like `random()`, `noise()`, etc. 
-* `sdf/`: signed distance field generation functions. Most of them ported from [PixelSpiritDeck](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/)
-* `draw/`: functions that draw shapes, numbers, lines, etc. Most of them ported from [PixelSpiritDeck](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/)
+* `sdf/`: signed distance field generation functions from [PixelSpirit](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/)
+* `draw/`: functions that draw shapes, numbers, lines, etc. Ported from [PixelSpirit](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/)
 * `sample/`: sample operations
 * `filters/`: typical filter operations like different kind of blurs, mean and median filters.
 * `distort/`: distort sampling operations
@@ -90,12 +90,11 @@ This library has been built over years, and in many cases on top of the work of 
 
 # License 
 
-LYGIA is dual-licensed under [the Prosperity License](https://prosperitylicense.com/versions/3.0.0) and the Patron License for individual cases.
+LYGIA is dual-licensed under [the Prosperity License](https://prosperitylicense.com/versions/3.0.0) and the [Patron License](https://patronlicense.com/versions/1.0.0.html) for individual cases.
 
-A Patron License can be obtained by making regular payments through [GitHub Sponsorships](https://github.com/sponsors/patriciogonzalezvivo), in amounts qualifying for a tier of rewards that includes “patron licenses”. A Patron License grants qualifying patrons permission to ignore any noncommercial or copyleft rules in all of my License Zero Prosperity licensed software.
+A [Patron License](https://patronlicense.com/versions/1.0.0.html) can be obtained by making regular payments through [GitHub Sponsorships](https://github.com/sponsors/patriciogonzalezvivo), in amounts qualifying for a tier of rewards that includes “patron licenses”. A Patron License grants qualifying patrons permission to ignore any noncommercial or copyleft rules in all of my License Zero Prosperity licensed software.
 
-By becoming a Patron, you'll be helping to ensure I can spend the time not just fixing bugs, adding features, releasing new versions, but also keeping projects afloat and growing. Think of investing in me not just for the output of my code but my continued role in the open-source ecosystem. If open software producers and maintainers like me aren't supported then communities won't grow and there may not be a fresh package when you need a bug fixed.
-
+By becoming a Sponsor, you'll be helping to ensure I can spend the time not just fixing bugs, adding features, releasing new versions, but also keeping projects afloat and growing. Think of investing in me not just for the output of my code but my continued role in the open-source ecosystem. If open software producers and maintainers like me aren't supported then communities won't grow and there may not be a fresh package when you need a bug fixed.
 
 Keeping LYGIA in growing healthy require works and dedication, I really appreciate your support improving it. That could be adding new functions, testing it, fixing bugs, translating the GLSL files to HLSL and Metal or just [sponsoring through GitHub](https://github.com/sponsors/patriciogonzalezvivo).
 
