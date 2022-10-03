@@ -1,6 +1,6 @@
 ![](https://artpil.com/wp-content/uploads/Lygia-Clark-banner.jpg)
 
-# Lygia: a multi-language shader library
+# LYGIA: a multi-language shader library
 
 > This package is automatically kept up-to-date with the base lygia repository at https://github.com/patriciogonzalezvivo/lygia
 
@@ -9,7 +9,7 @@ Tired of reimplementing and searching for the same functions over and over, I st
 Learn how to use it with this examples for:
 
 * [Unity3D through HLSL](https://github.com/patriciogonzalezvivo/lygia_unity_examples)
-* [In pure GLSL in GlslViewer](https://github.com/patriciogonzalezvivo/lygia_examples)
+* [In pure GLSL you can run in GlslViewer](https://github.com/patriciogonzalezvivo/lygia_examples)
 
 Join [#Lygia channel on shader.zone discord](https://shader.zone/) to learn how to use it, share work or get help.
 
