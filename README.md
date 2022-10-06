@@ -6,10 +6,10 @@
 
 Tired of reimplementing and searching for the same functions over and over, I started compiling and building a shader library of reusable assets (mostly functions) that can be include over and over. It's very granular, designed for reusability, performance and flexibility. 
 
-Learn how to use it with this examples for:
+Learn how to use it with this **examples** for:
 
-* [Unity3D through HLSL](https://github.com/patriciogonzalezvivo/lygia_unity_examples)
-* [In pure GLSL you can run in GlslViewer](https://github.com/patriciogonzalezvivo/lygia_examples)
+* [Unity3D (HLSL)](https://github.com/patriciogonzalezvivo/lygia_unity_examples)
+* [GlslViewer (GLSL)](https://github.com/patriciogonzalezvivo/lygia_examples)
 
 Join [#Lygia channel on shader.zone discord](https://shader.zone/) to learn how to use it, share work or get help.
 
@@ -52,13 +52,13 @@ void main(void) {
 
 The functions are divided in different categories:
 
-* `math/`: general math functions and constants. 
+* `math/`: general math functions and constants like `PI`, `SqrtLength()`, etc. 
 * `space/`: general spatial operations like `scale()`, `rotate()`, etc.
 * `color/`: general color operations like `luma()`, `saturation()`, blend modes, palettes, color space conversion and tonemaps.
 * `animation/`: animation operations, like easing
 * `generative/`: generative functions like `random()`, `noise()`, etc. 
-* `sdf/`: signed distance field generation functions from [PixelSpirit](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/)
-* `draw/`: functions that draw shapes, numbers, lines, etc. Ported from [PixelSpirit](https://patriciogonzalezvivo.github.io/PixelSpiritDeck/)
+* `sdf/`: signed distance field functions.
+* `draw/`: drawing functions like `digits()`, `stroke()`, `fill`, etc/.
 * `sample/`: sample operations
 * `filters/`: typical filter operations like different kind of blurs, mean and median filters.
 * `distort/`: distort sampling operations
