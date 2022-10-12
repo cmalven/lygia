@@ -33,19 +33,37 @@ options:
 #define FNC_BOXBLUR2D
 BOXBLUR2D_TYPE boxBlur2D(in sampler2D tex, in vec2 st, in vec2 pixel, const int kernelSize) {
     BOXBLUR2D_TYPE color = BOXBLUR2D_TYPE(0.);
+
     #ifndef BOXBLUR2D_KERNELSIZE
+
+    #if defined(PLATFORM_WEBGL)
+    #define BOXBLUR2D_KERNELSIZE 20
+    float kernelSizef = float(kernelSize);
+    #else
     #define BOXBLUR2D_KERNELSIZE kernelSize
+    float kernelSizef = float(BOXBLUR2D_KERNELSIZE);
+    #endif
+
+    #else
+    float kernelSizef = float(BOXBLUR2D_KERNELSIZE);
     #endif
 
     float accumWeight = 0.;
-    float f_kernelSize = float(BOXBLUR2D_KERNELSIZE);
-    float kernelSize2 = f_kernelSize * f_kernelSize;
+    float kernelSize2 = kernelSizef * kernelSizef;
     float weight = 1. / kernelSize2;
 
     for (int j = 0; j < BOXBLUR2D_KERNELSIZE; j++) {
-        float y = -.5 * (f_kernelSize - 1.) + float(j);
+        #if defined(PLATFORM_WEBGL)
+        if (j >= kernelSize)
+            break;
+        #endif
+        float y = -.5 * (kernelSizef - 1.) + float(j);
         for (int i = 0; i < BOXBLUR2D_KERNELSIZE; i++) {
-            float x = -.5 * (f_kernelSize - 1.) + float(i);
+            #if defined(PLATFORM_WEBGL)
+            if (i >= kernelSize)
+                break;
+            #endif
+            float x = -.5 * (kernelSizef - 1.) + float(i);
             color += BOXBLUR2D_SAMPLER_FNC(st + vec2(x, y) * pixel) * weight;
         }
     }
