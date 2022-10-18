@@ -8,13 +8,7 @@ Tired of reimplementing and searching for the same functions over and over, I st
 
 ## How does it work?
 
-* Clone this repository in your project, where your shaders are.
-
-```bash
-    git clone https://github.com/patriciogonzalezvivo/lygia.git
-```
-
-* In your shader `#include` the functions you need:
+In your shader `#include` the functions you need:
 
 ```glsl
 
@@ -38,16 +32,44 @@ Tired of reimplementing and searching for the same functions over and over, I st
     }
 ```
 
+If you are working **locally** on an ecosystem that can resolve `#include` dependencies, just clone LYGIA in your project relative to the shader you are loading:
 
-Learn more about how to use it on this repositories with **examples**:
+```bash
+    git clone https://github.com/patriciogonzalezvivo/lygia.git
+```
+
+or as a submodule:
+
+```bash
+    git submodule add https://github.com/patriciogonzalezvivo/lygia.git
+```
+
+Learn more about how to use it from this **examples**:
 
 * [2D examples for Processing (GLSL)](https://github.com/patriciogonzalezvivo/lygia_p5_examples)
-* [2D/3D examples for P5.js (GLSL)](https://editor.p5js.org/patriciogonzalezvivo/sketches)
 * [2D examples for Three.js (GLSL)](https://github.com/patriciogonzalezvivo/lygia_threejs_examples) 
 * [2D/3D examples for Unity3D (HLSL)](https://github.com/patriciogonzalezvivo/lygia_unity_examples)
 * [2D/3D examples on GlslViewer (GLSL)](https://github.com/patriciogonzalezvivo/lygia_examples)
 
-Join [#Lygia channel on shader.zone discord](https://shader.zone/) to learn how to use it, share work or get help.
+If you are working directly on a **cloud platform** probably you want to resolve the dependencies without needing to install anything. Just add a link to `https://lygia.xyz/resolve.js` and resolve the dependencies on a GLSL/HLSL source `String` or `Strings[]` 
+
+```html
+<script src="https://lygia.xyz/resolve.js"></script>
+```
+
+And then resolve the dependencies by feeding the source files:
+
+```js
+    vertSource = resolveLygia(vertSource);
+    fragSource = resolveLygia(fragSource);
+    shdr = createShader(vertSource, fragSource);
+```
+
+Check related examples of this method here:
+
+* [2D/3D examples for P5.js (GLSL)](https://editor.p5js.org/patriciogonzalezvivo/sketches)
+
+For more information, guidance or feedback about using LYGIA, join [#Lygia channel on shader.zone discord](https://shader.zone/).
 
 
 ## How is it organized?
@@ -95,11 +117,11 @@ This library:
     * [C++](https://github.com/patriciogonzalezvivo/ada/blob/main/src/fs.cpp#L88-L171)
     * [Python](https://gist.github.com/patriciogonzalezvivo/9a50569c2ef9b08058706443a39d838e)
     * JavaScript: 
+        - [vanilla JS online resolver](https://lygia.xyz/resolve.js)
         - [vite](https://github.com/UstymUkhman/vite-plugin-glsl)
         - [esbuild](https://github.com/ricardomatias/esbuild-plugin-glsl-include)
         - [webpack](https://github.com/grieve/webpack-glsl-loader)
         - [observable](https://observablehq.com/d/e4e8a96f64a6bf81)
-        - [vanilla](https://github.com/actarian/vscode-glsl-canvas/blob/91ff09bf6cec35e73d1b64e50b56ef3299d2fe6b/src/glsl/export.ts#L351)
 
 * it's **very granular**. One function per file. Where the file and the function share the same name. Ex: `myFunc.glsl` contains `myFunct()`. There are some files that just include a collection of files inside a folder with the same name. For example:
 
