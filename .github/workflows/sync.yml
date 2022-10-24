@@ -1,8 +1,9 @@
 name: Sync Fork
 
 on:
-  schedule:
-    - cron: '0 * * * *' # every hour
+  # Scheduling is currently disabled
+  # schedule:
+  #   - cron: '0 * * * *' # every hour
   workflow_dispatch: # on button click
 
 jobs:
